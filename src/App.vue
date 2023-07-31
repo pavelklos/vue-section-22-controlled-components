@@ -8,8 +8,8 @@
         <div class="card-header">Newsletter</div>
         <div class="card-body">
           <form @submit.prevent="submit">
+            <!-- Name -->
             <div class="mb-2">
-              <!-- Name -->
               <input
                 type="text"
                 class="form-control"
@@ -21,8 +21,9 @@
                 "
               />
             </div>
+
+            <!-- E-mail -->
             <div class="mb-2">
-              <!-- E-mail -->
               <email-input
                 v-model:email="newsletterEmail"
               />
@@ -32,6 +33,14 @@
                   newsletterEmail = $event
                 "
               /> -->
+            </div>
+
+            <!-- Emoji -->
+            <div class="mb-2">
+              <EmojiInput
+                v-model="emoji"
+                :options="{ position: 'bottom' }"
+              />
             </div>
             <button
               type="submit"
@@ -44,18 +53,36 @@
       </div>
     </div>
   </div>
+
+  <!-- <div id="app" class="row d-flex justify-content-center">
+    <div class="col-md-5 mt-3">
+      <div class="card">
+        <div class="card-header">Emoji Selector</div>
+        <div class="card-body">
+          <form @submit.prevent="submit">
+            <div class="mb-3">
+              <EmojiInput v-model="emoji" :options="{ position: 'bottom' }" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </template>
 
 <script>
 import EmailInput from '@/components/EmailInput.vue';
+import EmojiInput from '@/components/EmojiInput.vue';
 
 export default {
   name: 'App',
-  components: { EmailInput },
+  components: { EmailInput, EmojiInput },
   data() {
     return {
       newsletterName: '',
       newsletterEmail: '',
+      emoji: '',
     };
   },
   methods: {
@@ -64,6 +91,7 @@ export default {
         name: this.newsletterName,
         email: this.newsletterEmail,
       });
+      console.log('Emoji: ', this.emoji);
     },
   },
 };
