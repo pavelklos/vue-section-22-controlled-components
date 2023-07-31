@@ -75,6 +75,10 @@
     />
 
     <hr />
+
+    <app-action />
+
+    <hr />
     <p>
       Lorem ipsum dolor sit amet, consectetur
       adipiscing elit. Suspendisse feugiat
@@ -177,6 +181,7 @@
 import EmailInput from '@/components/EmailInput.vue';
 import EmojiInput from '@/components/EmojiInput.vue';
 import AppModal from '@/components/Modal.vue';
+import AppAction from '@/components/Action.vue';
 
 export default {
   name: 'App',
@@ -184,6 +189,7 @@ export default {
     EmailInput,
     EmojiInput,
     AppModal,
+    AppAction,
   },
   data() {
     return {
