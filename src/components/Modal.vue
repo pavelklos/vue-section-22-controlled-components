@@ -39,7 +39,15 @@
 <script>
 export default {
   name: 'AppModal',
-  props: ['show'],
+  // props: ['show'],
+  props: {
+    show: {
+      required: true,
+    },
+    scrollable: {
+      default: false,
+    },
+  },
   methods: {
     close() {
       this.$emit('hide');
@@ -61,6 +69,35 @@ export default {
       'keydown',
       this.handler
     );
+  },
+  watch: {
+    show: {
+      immediate: true,
+      handler(newVal) {
+        if (newVal && !this.scrollable) {
+          document.body.style.setProperty(
+            'overflow',
+            'hidden'
+          );
+        } else {
+          document.body.style.removeProperty(
+            'overflow'
+          );
+        }
+      },
+    },
+    // show(newVal) {
+    //   if (newVal && !this.scrollable) {
+    //     document.body.style.setProperty(
+    //       'overflow',
+    //       'hidden'
+    //     );
+    //   } else {
+    //     document.body.style.removeProperty(
+    //       'overflow'
+    //     );
+    //   }
+    // },
   },
   // watch: {
   //   show(newVal) {
