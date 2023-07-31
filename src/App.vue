@@ -52,6 +52,22 @@
         </div>
       </div>
     </div>
+
+    <hr />
+
+    <div class="mt-2 ml-2">
+      <button
+        type="button"
+        class="btn btn-primary"
+        @click="open = true"
+      >
+        Open
+      </button>
+    </div>
+    <app-modal
+      :show="open"
+      @hide="open = false"
+    />
   </div>
 
   <!-- <div id="app" class="row d-flex justify-content-center">
@@ -74,15 +90,21 @@
 <script>
 import EmailInput from '@/components/EmailInput.vue';
 import EmojiInput from '@/components/EmojiInput.vue';
+import AppModal from '@/components/Modal.vue';
 
 export default {
   name: 'App',
-  components: { EmailInput, EmojiInput },
+  components: {
+    EmailInput,
+    EmojiInput,
+    AppModal,
+  },
   data() {
     return {
       newsletterName: '',
       newsletterEmail: '',
       emoji: '',
+      open: false,
     };
   },
   methods: {
